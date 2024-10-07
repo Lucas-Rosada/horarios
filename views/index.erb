@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Informação: Linhas</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+    <div class="container"> 
+        <h1>Lista de Ônibus</h1>
+        
+        <form method="get" action="/">
+            <label for="horario">Filtrar por Horário:</label>
+            <input type="time" id="horario" name="horario" value="<%= @horario_filtrado %>">
+            <input type="submit" value="Filtrar">
+        </form>
+
+        <% if @onibus.empty? %>
+            <p>Nenhum ônibus encontrado para o horário selecionado.</p>
+        <% else %>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Código do Ônibus</th>
+                    <th>Horário</th>
+                    <th>Marca</th>
+                    <th>Placa</th>
+                    <th>Local</th> 
+                </tr>
+                <% @onibus.each do |onibus| %>
+                <tr>
+                    <td><%= onibus['id'] %></td>
+                    <td><%= onibus['codigo_onibus'] %></td>
+                    <td><%= onibus['horario'] %></td>
+                    <td><%= onibus['marca'] %></td>
+                    <td><%= onibus['placa'] %></td>
+                    <td><%= onibus['local'] %></td> 
+                </tr>
+                <% end %>
+            </table>
+        <% end %>
+    </div>
+</body>
+</html>
