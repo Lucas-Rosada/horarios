@@ -7,13 +7,14 @@
 </head>
 <body>
     <div class="container"> 
-        <h1>Lista de Ônibus</h1>
+        <h1>Linhas</h1>
         
-        <form method="get" action="/">
-            <label for="horario">Filtrar por Horário:</label>
-            <input type="time" id="horario" name="horario" value="<%= @horario_filtrado %>">
-            <input type="submit" value="Filtrar">
-        </form>
+    <form method="get" action="/">
+        <label for="horario_inicial">Horário Inicial:</label>
+        <input type="time" id="horario_inicial" name="horario_inicial" value="<%= @horario_inicial %>">
+    
+        <input type="submit" value="Filtrar">
+    </form>
 
         <% if @onibus.empty? %>
             <p>Nenhum ônibus encontrado para o horário selecionado.</p>

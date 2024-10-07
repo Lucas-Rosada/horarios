@@ -11,18 +11,22 @@ def carregar_dados_onibus
 end
 
 get '/' do
-  @horario_filtrado = params['horario'] || ''
+  @horario_inicial = params['horario_inicial'] || ''
   
   @onibus = carregar_dados_onibus
 
   puts "Dados carregados: #{@onibus.inspect}"
 
-  if @horario_filtrado != ''
+  if @horario_inicial != ''
+    puts "Horário inicial: #{@horario_inicial}"
 
-    puts "Horário filtrado: #{@horario_filtrado}"
+    # Calcular o horário final como uma hora após o horário inicial
+    horario_final = (Time.parse(@horario_inicial) + 3600).strftime("%H:%M")
 
-    @onibus = @onibus.select { |onibus| onibus['horario'] == @horario_filtrado }
-
+    # Filtrando ônibus com horários dentro da faixa selecionada
+    @onibus = @onibus.select do |onibus|
+      onibus['horario'] >= @horario_inicial && onibus['horario'] <= horario_final
+    end
 
     puts "Ônibus após filtragem: #{@onibus.inspect}"
   end
