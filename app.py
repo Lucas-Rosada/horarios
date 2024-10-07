@@ -39,7 +39,8 @@ def connect_to_database():
                     'horario': horario_str,  
                     'marca': row[3],  
                     'placa': row[4],  
-                    'local': row[5]   
+                    'local': row[5],
+                    'vai_passar': row[6]
                 })
                 
             return data  

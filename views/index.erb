@@ -6,40 +6,36 @@
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
-    <div class="container"> 
-        <h1>Linhas</h1>
-        
+<div class="container">
     <form method="get" action="/">
         <label for="horario_inicial">Horário Inicial:</label>
         <input type="time" id="horario_inicial" name="horario_inicial" value="<%= @horario_inicial %>">
-    
         <input type="submit" value="Filtrar">
     </form>
 
-        <% if @onibus.empty? %>
-            <p>Nenhum ônibus encontrado para o horário selecionado.</p>
-        <% else %>
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Código do Ônibus</th>
-                    <th>Horário</th>
-                    <th>Marca</th>
-                    <th>Placa</th>
-                    <th>Local</th> 
-                </tr>
-                <% @onibus.each do |onibus| %>
-                <tr>
-                    <td><%= onibus['id'] %></td>
-                    <td><%= onibus['codigo_onibus'] %></td>
-                    <td><%= onibus['horario'] %></td>
-                    <td><%= onibus['marca'] %></td>
-                    <td><%= onibus['placa'] %></td>
-                    <td><%= onibus['local'] %></td> 
-                </tr>
-                <% end %>
-            </table>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Código do Ônibus</th>
+            <th>Horário</th>
+            <th>Marca</th>
+            <th>Placa</th>
+            <th>Local</th> 
+            <th>Vai Passar</th> 
+        </tr>
+        <% @onibus.each do |onibus| %>
+        <tr>
+            <td><%= onibus['id'] %></td>
+            <td><%= onibus['codigo_onibus'] %></td>
+            <td><%= onibus['horario'] %></td>
+            <td><%= onibus['marca'] %></td>
+            <td><%= onibus['placa'] %></td>
+            <td><%= onibus['local'] %></td>
+            <td><%= onibus['vai_passar'] %></td> 
+        </tr>
         <% end %>
-    </div>
+    </table>
+</div>
+
 </body>
 </html>

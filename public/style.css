@@ -5,7 +5,9 @@
     --azul: #3c8ec1;
     --branco: #ffffff;
     --preto: #000000;
-    --cinza: #5555;
+    --cinza: #f0f0f0;
+    --cinza-escuro: #555555;
+    --azul-claro: #e3f2fd;
 }
 
 * {
@@ -15,16 +17,16 @@
 }
 
 html {
-    font-size: 80%;
+    font-size: 100%;
     font-family: "Ubuntu", sans-serif;
 }
 
 body {
     font-family: Arial, sans-serif; 
-    background-color: rgb(240,248,255);
+    background-color: var(--azul-claro);
     margin: 0;
     padding: 0;
-    height: 100vh; 
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center; 
@@ -32,31 +34,81 @@ body {
 
 .container {
     background-color: var(--branco); 
-    border-radius: 8px; 
-    box-shadow:( 0 4px 8px );
-    padding: 20px; 
-    width: 80%; 
+    border-radius: 12px; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 30px; 
+    width: 95%; 
     max-width: 800px; 
+    overflow: hidden; 
+    overflow-y: auto; 
+    transition: box-shadow 0.3s ease;
 }
 
+.container:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+form {
+    margin-bottom: 20px; 
+    display: flex; 
+    flex-direction: column; 
+}
+
+label {
+    margin-bottom: 5px; 
+    font-weight: bold; 
+}
+
+input[type="time"], input[type="submit"] {
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid var(--cinza-escuro);
+    border-radius: 5px; 
+    font-size: 1rem; 
+}
+
+input[type="submit"] {
+    background-color: var(--anil);
+    color: var(--branco);
+    border: none; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+input[type="submit"]:hover {
+    background-color: var(--vermelho); 
+}
 
 table {
     width: 100%; 
     border-collapse: collapse; 
+    table-layout: auto; 
 }
-
 
 th, td {
     padding: 12px;
     text-align: left; 
-    border-bottom: 1px solid var(--preto); 
+    border-bottom: 1px solid var(--cinza-escuro); 
 }
 
 th {
     background-color: var(--anil); 
     color: var(--branco);
+    text-transform: uppercase; 
+    letter-spacing: 0.1em; 
 }
 
 tr:hover {
     background-color: var(--cinza); 
+}
+
+@media (max-width: 600px) {
+    th, td {
+        padding: 10px; 
+        font-size: 0.9rem; 
+    }
+
+    .container {
+        padding: 20px; 
+    }
 }
